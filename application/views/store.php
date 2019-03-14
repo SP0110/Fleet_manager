@@ -12,6 +12,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </center>
 
 </head>
+
+
 <body>
 <br><br><br>
 <div class="form-inline justify-content-center">
@@ -21,17 +23,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <input class="form-control mr-3 w-15" type="text" name="name" placeholder="Search" aria-label="search">
       </form>
       &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-      <div class="btn-group">
-  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-   Sort
+
+    <div class="btn-group">
+  <button type="button" class="btn btn-info">Sony</button>
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
   </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="<?php echo base_url(); ?>index.php/Log/search">Alphabet</a>
-    <a class="dropdown-item" href="#">Cost</a>
-    <a class="dropdown-item" href="#">running low</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Separated link</a>
-  </div>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Tablet</a></li>
+    <li><a href="#">Smartphone</a></li>
+  </ul>
+</div>
 </div>  &nbsp
        <form class="form-inline justify-content-center" method="post" action="<?php echo base_url(); ?>index.php/Log/addspare">
           <button type="submit" class="btn btn-info " >Add</button>
@@ -66,12 +68,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </tr>
   <?php } ?>
   </tbody>
-</table>
+</table><nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
 
 
 
-<script type="text/javascript" src="<?php echo base_url();?>js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/jquery.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>js/bootstrap.min.js"></script>
 </body>
 
 </html>

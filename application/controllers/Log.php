@@ -65,6 +65,11 @@ class Log extends CI_Controller {
  }
  public function store_index()
  {
+	 $this->load->view('welc.php');
+	 $this->load->view('spare_categories');
+ }
+ public function store_index1()
+ {
 	 if($this->session->userdata('username')!="")
 	 {
 	 $this->load->view('welc.php');
@@ -73,7 +78,7 @@ class Log extends CI_Controller {
 	// $this->load->view('footer');
  }
  else {	 redirect(base_url().'index.php/Log/index');  }
- }
+}
  public function profiles()
  {
 	 if($this->session->userdata('username')!="")
@@ -147,7 +152,7 @@ public function update_spare($id)
 }
  public function search()
  {
-	$name=$this->input->post('name');
+	$name=$this->input->post( 'name');
   $data['p']=$this->Mymodel->search($name);
   $this->load->view('search_result.php',$data);
  }
