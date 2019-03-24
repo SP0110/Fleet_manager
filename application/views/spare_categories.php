@@ -13,11 +13,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
 <br>
-<form action="<?php echo base_url(); ?>index.php/Log/store_index1">
+<form>
 <div class="row">
   <div class="col-md-4">     <center>  <h1 class="display-4" style="color:#138496;">Spare Categories</h1> </center>
 </div>
-  <div class="col-md-4 offset-md-4 display-4"><button class="btn btn-info">search</button></div>
+  <div class="col-md-4 offset-md-4 display-4" value="search"><button formaction="<?php echo base_url(); ?>index.php/Log/store_index1" name="search" class="btn btn-info">search</button>
+  <button class="btn btn-info" formaction="<?php echo base_url(); ?>index.php/Log/addspare" name="add" value="add">Add</button></div>
+
 </div>
 <div class= "container"><div class="row justify-content-center"><div class="col-md-12 text-center line">&nbsp;
 </div>
@@ -30,18 +32,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   <div class="row">
     <div class="col">
-      <button class="btn btn-info">Engine Assemblly</button><br>
-      <button class="btn btn-info">Clutch</button><br>
-      <button class="btn btn-info">Gear Box</button>
+      <button class="btn btn-info">Engine Assemblly</button><br><br>
+      <button class="btn btn-info">Clutch</button><br><br>
+      <button class="btn btn-info">Gear Box</button><br>
     </div>
     <div class="col">
-      <button class="btn btn-info">Nozzles</button><br>
-      <button class="btn btn-info">Rear Axle</button><br>
-      <button class="btn btn-info">Front Axle</button>
+      <button class="btn btn-info">Nozzles</button><br><br>
+      <button class="btn btn-info">Rear Axle</button><br><br>
+      <button class="btn btn-info">Front Axle</button><br>
     </div>
     <div class="col">
-      <button class="btn btn-info">Coolant Oil</button><br>
-      <button class="btn btn-info">Steering Box</button><br>
+      <button class="btn btn-info">Coolant Oil</button><br><br>
+      <button class="btn btn-info">Steering Box</button><br><br>
     </div>
   </div>
 </div>

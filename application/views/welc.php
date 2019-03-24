@@ -25,6 +25,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php    echo '<label><a class="nav-link text-white"  href="'.base_url().'index.php/Log/profiles">Profiles</a></label>';?>
       </li>
       <li class="nav-item">
+        <?php    echo '<label><a class="nav-link text-white"  href="'.base_url().'index.php/Log2/stud_db">Students</a></label>';?>
+      </li>
+      <li class="nav-item">
         <?php    echo '<label><a class="nav-link text-white"  href="'.base_url().'index.php/Log/logout">Logout</a></label>';?>
       </li>
     </ul>

@@ -13,7 +13,9 @@
 
 echo '<h2>Welcome '.$this->session->userdata('username').'</h2>';
 
+
 ?>
+
 
 </center>
 </p>

@@ -64,7 +64,7 @@ class Mymodel extends CI_Model
                 ->db
                 ->select('*')
                 ->from('store')
-                ->like('name',$search)
+                ->like('spare',$search)
                 ->or_like('brand',$search)
                 ->get();
 
@@ -100,6 +100,14 @@ public function search($name)
   $this->db->select('*');
   $this->db->from('store');
   $this->db->where('spare',$name);
+  $query=$this->db->get();
+  return $query;
+}
+public function notifications()
+{
+  $this->db->select('*');
+  $this->db->from('store');
+  $this->db->where('quantity','5');
   $query=$this->db->get();
   return $query;
 }

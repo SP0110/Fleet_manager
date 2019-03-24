@@ -31,6 +31,7 @@ class Log extends CI_Controller {
 		 {
 			 $session_data=array('username'=>$username );
 			 $this->session->set_userdata($session_data);
+
 			 redirect(base_url().'index.php/Log/enter');
 	   	//$this->enter();
 		 }
@@ -50,12 +51,17 @@ class Log extends CI_Controller {
  public function enter(){
 	 if($this->session->userdata('username')!='')
 	 {
-		   $this->load->view('welc.php');
-      $this->load->view('log_success');
+		  $this->load->view('welc.php');
+			$this->load->view('log_success');
+      $spares['a']= $this->Mymodel->notifications();
+			$this->load->view('notifications.php',$spares);
 			$this->load->view('footer');
 
 	 }
-	 else{ redirect(base_url().'Log/index');	 }
+	 else
+	 {
+		  redirect(base_url().'Log/index');
+			 }
  }
 
  public function logout()
@@ -113,7 +119,7 @@ public function profilefetch()
 	$cost=$this->input->post('cost');
 	$quantity=$this->input->post('quantity');
   $newspare['n']=$this->Mymodel->newspare($name,$brand,$cost,$quantity);
-	 redirect(base_url().'index.php/Log/store_index');
+	 redirect(base_url().'index.php/Log/store_index1');
  }
  else
 	{
@@ -125,7 +131,6 @@ public function profilefetch()
 
 public function edit($id)
 {
-
 	$data['info']=$this->Mymodel->editdb($id);
 	$this->load->view('editdb.php',$data);
 }
@@ -141,7 +146,7 @@ public function update_spare($id)
  $cost=$this->input->post('cost');
  $quantity=$this->input->post('quantity');
  $newspare['n']=$this->Mymodel->update_spare($name,$brand,$cost,$quantity,$id);
-  redirect(base_url().'index.php/Log/store_index');
+  redirect(base_url().'index.php/Log/store_index1');
  }
  else
  {
