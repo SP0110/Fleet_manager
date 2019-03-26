@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/faw/css/all.css">
 
   <center>
-  <h1 class="display-4">STORE</h1>
+  <h1 class="display-4">STUDENTS</h1>
 </center>
 
 </head>
@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="form-inline justify-content-center">
 
     <div class="btn-group">
-      <form class="form-inline justify-content-center" method="post" action="<?php echo base_url(); ?>index.php/Log/search">
+      <form class="form-inline justify-content-center" method="post" action="<?php echo base_url(); ?>index.php/Log2/search">
           <input class="form-control mr-3 w-15" type="text" name="name" placeholder="Search" aria-label="search">
       </form>
       &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 </div>  &nbsp
-       <form class="form-inline justify-content-center" method="post" action="<?php echo base_url(); ?>index.php/Log/addspare">
+       <form class="form-inline justify-content-center" method="post" action="<?php echo base_url(); ?>index.php/Log2/addstud">
           <button type="submit" class="btn btn-info " >Add</button>
        </form>
     </div>
@@ -48,23 +48,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <table class="table table-bordered ">
   <thead class="thead-dark">
   <tr>
-    <th scope="col" style="text-align:center">ID</th>
-    <th scope="col" style="text-align:center" >SPARE</th>
-    <th scope="col" style="text-align:center">BRAND</th>
-    <th scope="col" style="text-align:center" >COST</th>
-    <th scope="col" style="text-align:center">QUANTITY</th>
+    <th scope="col" style="text-align:center">NAME</th>
+    <th scope="col" style="text-align:center" >ROLL NO</th>
+    <th scope="col" style="text-align:center">YEAR</th>
+    <th scope="col" style="text-align:center" >DEPARTMENT</th>
+    <th scope="col" style="text-align:center">BUS NO</th>
+    <th scope="col" style="text-align:center">BOARDING POINT</th>
+    <th scope="col" style="text-align:center">FEES</th>
+    <th scope="col" style="text-align:center">BILL NO</th>
+    <th scope="col" style="text-align:center">STATUS</th>
   </tr>
   </thead>
   <tbody>
     <?php foreach ( $a->result() as $row ) {?>
     <tr>
-      <td><?php echo $row->id;?></td>
-      <td><?php echo $row->spare;?></td>
-      <td><?php echo $row->brand;?></td>
-      <td><?php echo $row->cost;?></td>
-      <form  method="POST" action="<?php echo base_url()?>index.php/Log/edit/<?php echo $row->id;?>" class="form-inline  vertical-center">
+      <td style="text-align:center"><?php echo $row->name;?></td>
+      <td style="text-align:center"><?php echo $row->roll_no;?></td>
+      <td style="text-align:center"><?php echo $row->year;?></td>
+      <td style="text-align:center"><?php echo $row->department;?></td>
+      <td style="text-align:center"><?php echo $row->bus_no;?></td>
+      <td style="text-align:center"><?php echo $row->board_pt;?></td>
+      <td style="text-align:center"><?php echo $row->fees;?></td>
+      <td style="text-align:center"><?php echo $row->bill_no;?></td>
+      <form  method="POST" action="<?php echo base_url()?>index.php/Log2/edit/<?php echo $row->id;?>" class="form-inline  vertical-center">
           <td style="text-align:center";>
-            <?php echo $row->quantity;?>
+            <?php echo $row->status;?>
             <button type="submit" style="float:right;"  class="btn btn-info"><i class="far fa-edit"></i></button>
           </td>
      </form>

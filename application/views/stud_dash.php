@@ -28,8 +28,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <br><br>
 </div>
 </form>
+<div>
 <h1>Total  number of students</h1> <br>
-
+<form>
+   &nbsp
+<button class="btn btn-info" formaction="<?php echo base_url(); ?>index.php/Log2/studentlist/1" name="add" value="add">First year</button>
+<button class="btn btn-info" formaction="<?php echo base_url(); ?>index.php/Log2/studentlist/2" name="add" value="add">Second year</button>
+<button class="btn btn-info" formaction="<?php echo base_url(); ?>index.php/Log2/studentlist/3" name="add" value="add">Third year</button>
+<button class="btn btn-info" formaction="<?php echo base_url(); ?>index.php/Log2/studentlist/4" name="add" value="add">Final year</button>
+<button class="btn btn-info" formaction="<?php echo base_url(); ?>index.php/Log2/route_category" name="add" value="add">Routes</button>
+</form>
+</div>
 <script type="text/javascript" src="<?php echo base_url();?>js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/jquery.min.js"></script>
 </body>

@@ -107,7 +107,12 @@ public function notifications()
 {
   $this->db->select('*');
   $this->db->from('store');
-  $this->db->where('quantity','5');
+  $this->db->like('quantity','5');
+  $this->db->or_like('quantity','4');
+  $this->db->or_like('quantity','3');
+  $this->db->or_like('quantity','2');
+  $this->db->or_like('quantity','1');
+  //$this->db->where('quantity','5');
   $query=$this->db->get();
   return $query;
 }
