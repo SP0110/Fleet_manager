@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 .navbar-custom
 {
   color: #FFFFFF;
-  background-color:#212529 ;
+  background-color:#212529;
   min-height: 50px;
 }
 </style>

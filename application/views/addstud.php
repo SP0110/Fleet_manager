@@ -6,6 +6,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/faw/css/all.css">
+  <script>
+
+  $(document).ready(function() {
+$("#bal").attr('disabled','disabled');
+$("#form").keyup(function()
+{
+  $"#submit").attr('disabled','disabled');
+  var status=$(#status);
+  if(status=="paid")
+  {
+    $("#bal").removeAttr('disabled');
+    $("#bal").css({
+      "cursor":"pointer","box-shadow":"1px 0ppx 6px #333"
+    });
+  }
+}
+})
+$("#bal").click(function()
+{
+  $("#bal").css(
+    {
+        "cursor":"default","box-shadow":"none"
+    });
+    });
+  </script>
+
+
 </head>
 <body>
 
@@ -40,7 +67,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="mb-4 ">
 
   <label for="s" ><b>Department</b></label>
-  <input id="s" type="text"  name="department"  class="form-control " />
+  <select id="s" placeholder="select dept."  name="department" class="form-control">
+    <option>CSE</option>
+    <option>MECH</option>
+    <option>ECE</option>
+    <option>IT</option>
+    <option>CHEMICAL</option>
+    <option>BIO-MED</option>
+
+  </select>
 </div>
 <div class="mb-4 ">
 
@@ -48,9 +83,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <input id="s" type="text" placeholder=""  name="bus_no"  class="form-control " />
 </div>
 <div class="mb-4 ">
+  <label for="inputState"><b>Boarding Point</b></label>
+  <select id="inputState"   name="board_pt" class="form-control">
+    <option selected>Annanagar</option>
+    <option>Goripalayam</option>
+    <option>arupukotai</option>
 
-  <label for="s" ><b>Boarding Point</b></label>
-  <input id="s" type="text" placeholder=""  name="board_pt"  class="form-control " />
+  </select>
+
 </div>
 <div class="mb-4 ">
 
@@ -60,13 +100,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="mb-4 ">
 
   <label for="s" ><b>Bill Number</b></label>
-  <input id="s" type="text" placeholder=""  name="bill_no"  class="form-control " />
+  <input id="s" type="text" placeholder="" value-"SAT"  name="bill_no"  class="form-control " />
 </div>
+
+
 <div class="mb-4 ">
 
   <label for="s" ><b>Status</b></label>
-  <input id="s" type="text" placeholder=""  name="status"  class="form-control " />
+  <select id="S"   name="status" class="form-control">
+    <option selected>not paid</option>
+    <option>paid</option>
+  </select>
 </div>
+
+<div class="mb-4">
+  <label for='s'><b>Balance</b></label>
+  <input id="bal" type="text" placeholder=""  name="bill_no"  class="form-control " />
 
 
 

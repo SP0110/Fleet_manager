@@ -51,10 +51,10 @@ class Mymodel extends CI_Model
     $query=$this->db->get();
     return $query;
   }
-  public function newspare($name,$brand,$cost,$quantity)
+  public function newspare($name,$brand,$cost,$quantity,$set)
   {
 
-    $data=array('spare'=>$name,'brand'=>$brand,'cost'=>$cost,'quantity'=>$quantity);
+    $data=array('spare'=>$name,'brand'=>$brand,'cost'=>$cost,'quantity'=>$quantity,'sets'=>$set);
     $this->db->insert('store',$data);
   }
 
@@ -105,16 +105,28 @@ public function search($name)
 }
 public function notifications()
 {
-  $this->db->select('*');
-  $this->db->from('store');
-  $this->db->like('quantity','5');
-  $this->db->or_like('quantity','4');
-  $this->db->or_like('quantity','3');
-  $this->db->or_like('quantity','2');
-  $this->db->or_like('quantity','1');
-  //$this->db->where('quantity','5');
-  $query=$this->db->get();
+//  $this->db->select('*');
+//  $this->db->from('store');
+//  $this->db->where('quantity','5');
+//  $query=$this->db->get();
+$query= $this->db->query('SELECT * FROM store WHERE quantity < 5');
   return $query;
+}
+
+public function fees()
+{
+//    $this->db->select("*");
+// $this->db->from('student_db');
+//  $query=$this->db->get();
+$query= $this->db->query("SELECT * FROM student_db WHERE status LIKE 'not paid'");
+  return $query;
+}
+
+public function spareset($set)
+{
+  $query= $this->db->query("SELECT * FROM store WHERE sets LIKE '$set' ");
+    return $query;
+
 }
 }
 ?>

@@ -15,7 +15,7 @@ class Log extends CI_Controller {
 	  $this->load->view('footer');
 
   }
-
+//--------------------------------------------------------------------------------------
   public function login_validation()
   {
 		$this->form_validation->set_rules('username','Username','required');
@@ -48,13 +48,16 @@ class Log extends CI_Controller {
    $this->index();
  }
  }
+ //----------------------------------------------------------------------------------
  public function enter(){
+
 	 if($this->session->userdata('username')!='')
 	 {
-		  $this->load->view('welc.php');
+
+		  $this->load->view('welc1.php');
 			$this->load->view('log_success');
-      $spares['a']= $this->Mymodel->notifications();
-			$this->load->view('notifications.php',$spares);
+
+			$this->load->view('notifications.php');
 			$this->load->view('footer');
 
 	 }
@@ -63,33 +66,47 @@ class Log extends CI_Controller {
 		  redirect(base_url().'Log/index');
 			 }
  }
-
+ //----------------------------------------------------------------------------------
  public function logout()
  {
+	 if($this->session->userdata('username')!="")
+	{
 	 $this->session->unset_userdata('username');
    redirect(base_url().'index.php/Log/index');
  }
+ else {	 redirect(base_url().'index.php/Log/index');  }
+ }
+ //----------------------------------------------------------------------------------
  public function store_index()
  {
-	 $this->load->view('welc.php');
+	 if($this->session->userdata('username')!="")
+	{
+	 $this->load->view('welc1.php');
 	 $this->load->view('spare_categories');
  }
+ else {	 redirect(base_url().'index.php/Log/index');  }
+
+ }
+ //----------------------------------------------------------------------------------
+
  public function store_index1()
  {
 	 if($this->session->userdata('username')!="")
 	 {
-	 $this->load->view('welc.php');
+	 $this->load->view('welc1.php');
 	 $spares['a']= $this->Mymodel->storefetch();
 	 $this->load->view('store.php',$spares);
 	// $this->load->view('footer');
  }
  else {	 redirect(base_url().'index.php/Log/index');  }
 }
+//----------------------------------------------------------------------------------
+
  public function profiles()
  {
 	 if($this->session->userdata('username')!="")
   {
-  $this->load->view('welc.php');
+  $this->load->view('welc1.php');
   $this->load->view('profile.php');
 //	$prof['p']= $this->Mymodel->();
 //	$this->load->view('profile.php',$prof);
@@ -97,17 +114,33 @@ class Log extends CI_Controller {
  }
  else { redirect(base_url().'index.php/Log/index'); }
  }
+ //----------------------------------------------------------------------------------
+
 public function profilefetch()
 {
-	$this->load->view('welc.php');
+	if($this->session->userdata('username')!="")
+ {
+	$this->load->view('welc1.php');
 	$busno=$this->input->post('busno');
 	$prof['p']=$this->Mymodel->profile($busno);
 	$this->load->view('vehprof.php',$prof);
 }
+else {	 redirect(base_url().'index.php/Log/index');  }
+
+}
+//----------------------------------------------------------------------------------
+
  public function addspare()
  {
+	 if($this->session->userdata('username')!="")
+	 {
 	 $this->load->view('addspare.php');
  }
+	 else {	 redirect(base_url().'index.php/Log/index');  }
+
+ }
+ //----------------------------------------------------------------------------------
+
  public function add_spare_db()
  {
 	 $this->form_validation->set_rules('name','Name','required');
@@ -118,7 +151,8 @@ public function profilefetch()
 	$brand=$this->input->post('brand');
 	$cost=$this->input->post('cost');
 	$quantity=$this->input->post('quantity');
-  $newspare['n']=$this->Mymodel->newspare($name,$brand,$cost,$quantity);
+	$set=$this->input->post('sets');
+  $newspare['n']=$this->Mymodel->newspare($name,$brand,$cost,$quantity,$set);
 	 redirect(base_url().'index.php/Log/store_index1');
  }
  else
@@ -128,12 +162,19 @@ public function profilefetch()
 		 redirect(base_url().'index.php/Log/addspare');
  }
 }
+//----------------------------------------------------------------------------------
 
 public function edit($id)
 {
+	if($this->session->userdata('username')!="")
+ {
 	$data['info']=$this->Mymodel->editdb($id);
 	$this->load->view('editdb.php',$data);
+}	else {	 redirect(base_url().'index.php/Log/index');  }
+
+
 }
+//----------------------------------------------------------------------------------
 
 public function update_spare($id)
 {
@@ -155,11 +196,99 @@ public function update_spare($id)
  	 redirect(base_url().'index.php/Log/edit/'.$id);
  }
 }
+//----------------------------------------------------------------------------------
+
  public function search()
  {
+	 if($this->session->userdata('username')!="")
+	{
 	$name=$this->input->post( 'name');
   $data['p']=$this->Mymodel->search($name);
   $this->load->view('search_result.php',$data);
+}
+	else {	 redirect(base_url().'index.php/Log/index');  }
+
  }
 
-}?>
+ public function consume($id)
+ {
+
+	 if($this->session->userdata('username')!="")
+	{
+ 	$data['info']=$this->Mymodel->editdb($id);
+ 	$this->load->view('consume.php',$data);
+}
+else {	 redirect(base_url().'index.php/Log/index');  }
+
+ }
+ //----------------------------------------------------------------------------------
+
+public function spare_not()
+{
+	if($this->session->userdata('username')!="")
+ {
+  $this->load->view('welc1.php');
+  $spares['a']= $this->Mymodel->notifications();
+	$this->load->view('spare_not.php',$spares);
+	$this->load->view('footer');
+}
+else {	 redirect(base_url().'index.php/Log/index');  }
+
+
+}
+
+//----------------------------------------------------------------------------------
+
+public function feesdetails()
+{
+	if($this->session->userdata('username')!="")
+ {
+	$this->load->view('welc1.php');
+  $spares['a']= $this->Mymodel->fees();
+	$this->load->view('fees_details.php',$spares);
+	$this->load->view('footer');
+
+}
+	else {	 redirect(base_url().'index.php/Log/index');  }
+
+}
+//----------------------------------------------------------------------------------
+
+public function fuelprofile()
+{
+	if($this->session->userdata('username')!="")
+ {
+	$this->load->view('welc1.php');
+	$this->load->view('vehiclereport.php');
+	$this->load->view('footer');
+}
+	else {	 redirect(base_url().'index.php/Log/index');  }
+
+}
+//----------------------------------------------------------------------------------
+public function spareset($set)
+{
+	if($this->session->userdata('username')!="")
+ {
+	$this->load->view('welc1.php');
+	$spare['a']=$this->Mymodel->spareset($set);
+	$this->load->view('spareset.php',$spare);
+	$this->load->view('footer');
+}
+ else {	 redirect(base_url().'index.php/Log/index');  }
+}
+//----------------------------------------------------------------------------------
+public function service()
+{
+	if($this->session->userdata('username')!="")
+{
+	$this->load->view('welc1.php');
+	$this->load->view('servicedash.php');
+	$this->load->view('footer');
+
+
+}
+else {	 redirect(base_url().'index.php/Log/index');  }
+}
+}
+?>

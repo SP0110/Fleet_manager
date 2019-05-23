@@ -43,7 +43,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <input id="s" type="text" placeholder=""  name="quantity"  class="form-control " />
 </div>
 
+<div class="mb-4 ">
 
+  <label for="s" ><b>Spare Set</b></label>
+  <select id="s" placeholder="select set."  name="sets" class="form-control">
+    <option>Engine Assembly</option>
+    <option>Axle</option>
+
+
+  </select>
+</div>
    <div class="modal-footer justify-content-center">
   	   <button type="submit" class="btn btn-info btn-block">Add</button>
   </div>

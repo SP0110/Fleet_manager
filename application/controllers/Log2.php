@@ -6,7 +6,7 @@ class Log2 extends CI_Controller {
 function stud_db()
 {
 
-   $this->load->view('welc.php');
+   $this->load->view('welc1.php');
   // $countcol1['b']=$this->MyModel1->getcount('buswise');
    //$countcol2['d']=$this->MyModel1->getcount('deptwise');
    //$countcol3['s']=$this->MyModel1->getcount('stopwise');
@@ -66,9 +66,10 @@ public function studentlist($y)
   if($this->session->userdata('username')!="")
   {
 
-  $this->load->view('welc.php');
+  $this->load->view('welc1.php');
   $students['a']= $this->MyModel1->studentlist_fetch($y);
   $this->load->view('studentlist.php',$students);
+
 
  // $this->load->view('footer');
 }
@@ -78,14 +79,14 @@ public function studentlist($y)
 }
 public function addstud()
 {
-   $this->load->view('welc.php');
+   $this->load->view('welc1.php');
   $this->load->view("addstud.php");
 
 }
 //---------------------------------------------------------------------------------------------------------------
 public function route_category()
 {
-  $this->load->view('welc.php');
+  $this->load->view('welc1.php');
 
   $this->load->view('routelist.php');
 }
@@ -93,9 +94,9 @@ public function route_category()
 //---------------------------------------------------------------------------------------------------------
 public function routewise($route)
 {
-  $this->load->view('welc.php');
+  $this->load->view('welc1.php');
   $students['a']= $this->MyModel1->routelist_fetch($route);
-  $this->load->view('list.php',$students);
+  $this->load->view('routelistresult.php',$students);
 }
 //----------------------------------------------------------------------------------------------------------
 public function add_stud_db()
@@ -133,6 +134,23 @@ else
 
 function stud_index()
 {
+  if($this->session->userdata('username')!="")
+  {
+  $this->load->view('welc1.php');
+  $spares['a']= $this->MyModel1->storefetch();
+  $this->load->view('stud_db.php',$spares);
+ // $this->load->view('footer');
+}
+else {	 redirect(base_url().'index.php/Log/index');  }
+}
+
+//----------------------------------------------------------------------------------------------------------\\
+public function search()
+{
+  $this->load->view('welc1.php');
+  $name=$this->input->post( 'name');
+  $data['a']=$this->MyModel1->search($name);
+  $this->load->view('stud_search_result.php',$data);
 
 }
 }?>

@@ -7,8 +7,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/faw/css/all.css">
 
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/faw/css/all.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/datatables/datatables.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
+
+
+<script type="text/javascript" charset="utf8" src="<?php echo base_url(); ?>assets/datatables/datatables.js"></script>
+<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+  <script>
+  $(document).ready(function() {
+      $('#studentdata').DataTable( {
+          columnDefs: [ {
+              targets: [ 0 ],
+              orderData: [ 0, 1 ]
+          }, {
+              targets: [ 1 ],
+              orderData: [ 1, 0 ]
+          }, {
+              targets: [ 4 ],
+              orderData: [ 4, 0 ]
+          } ]
+      } );
+  } );
+  </script>
+
+  <script type="text/javascript" src="<?php echo base_url();?>js/jquery.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url();?>js/bootstrap.min.js"></script>
   <center>
   <h1 class="display-4">STORE</h1>
 </center>
@@ -20,24 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <br><br><br>
 <div class="form-inline justify-content-center">
 
-    <div class="btn-group">
-      <form class="form-inline justify-content-center" method="post" action="<?php echo base_url(); ?>index.php/Log/search">
-          <input class="form-control mr-3 w-15" type="text" name="name" placeholder="Search" aria-label="search">
-      </form>
-      &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-
-    <div class="btn-group">
-  <button type="button" class="btn btn-info">Sort</button>
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="#">Tablet</a></li>
-    <li><a href="#">Smartphone</a></li>
-  </ul>
-</div>
-
-</div>  &nbsp
+     &nbsp
        <form class="form-inline justify-content-center" method="post" action="<?php echo base_url(); ?>index.php/Log/addspare">
           <button type="submit" class="btn btn-info " >Add</button>
        </form>
@@ -45,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </div>
 <br>
-<table class="table table-bordered ">
+<table id="studentdata" class="table table-bordered ">
   <thead class="thead-dark">
   <tr>
     <th scope="col" style="text-align:center">ID</th>
@@ -62,33 +73,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <td><?php echo $row->spare;?></td>
       <td><?php echo $row->brand;?></td>
       <td><?php echo $row->cost;?></td>
-      <form  method="POST" action="<?php echo base_url()?>index.php/Log/edit/<?php echo $row->id;?>" class="form-inline  vertical-center">
+
           <td style="text-align:center";>
             <?php echo $row->quantity;?>
-            <button type="submit" style="float:right;"  class="btn btn-info"><i class="far fa-edit"></i></button>
+            <div>
+              <form>
+            <button type="submit" style="float:right;"  formaction="<?php echo base_url()?>index.php/Log/edit/<?php echo $row->id;?>" class="btn btn-info"><i class="far fa-edit"></i></button>
+
+            <button type="submit" style="float:right;"  formaction="<?php echo base_url()?>index.php/Log/consume/<?php echo $row->id;?>" class="btn btn-info"><i class="fas fa-arrow-circle-down"></i></button>
+          </div>
+        </form>
           </td>
-     </form>
-    </tr>
+        </tr>
   <?php } ?>
   </tbody>
-</table><nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-end">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
+</table>
 
 
-
-<script type="text/javascript" src="<?php echo base_url();?>js/jquery.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>js/bootstrap.min.js"></script>
 </body>
 
 </html>

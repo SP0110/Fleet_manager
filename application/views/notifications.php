@@ -8,13 +8,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/faw/css/all.css">
 </head>
 <body>
-<h1>Spare Running low</h1> <br>
 
-      <?php foreach ( $a->result() as $row ) {?>
-  &nbsp &nbsp <?php echo $row->spare;?><br>
+<h1><a href="<?php echo base_url(); ?>/index.php/Log/spare_not">Spare Running low</a></h1> <br>
 
+<h1><a href="<?php echo base_url(); ?>/index.php/Log/feesdetails">Fees details</a></h1> <br>
 
-    <?php } ?>
     <script type="text/javascript" src="<?php echo base_url();?>js/jquery.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url();?>js/bootstrap.min.js"></script>
 </body>

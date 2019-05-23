@@ -32,6 +32,22 @@ class Mymodel1 extends CI_Model
     return $query;
 
   }
+  public function search($name)
+  {
+    $this->db->select('*');
+    $this->db->from('student_db');
+    $this->db->where('name',$name);
+    $query=$this->db->get();
+    return $query;
+  }
+
+  public function storefetch()
+  {
+    $this->db->select("*");
+    $this->db->from('student_db');
+    $query=$this->db->get();
+    return $query;
+  }
 
   public function update_student($n,$r,$y,$d,$bn,$bp,$f,$bin,$s,$id)
   {

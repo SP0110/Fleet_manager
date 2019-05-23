@@ -65,7 +65,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  <div class="modal-footer justify-content-center">
 	   <button type="submit" class="btn btn-info btn-block">Sign in</button>
 </div>
-<?php     echo '<label><a href="'.base_url().'index.php/Log/logout">forgot password ?</a></label>';     ?>
 </div>
 
   <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>

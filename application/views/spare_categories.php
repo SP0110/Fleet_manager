@@ -17,8 +17,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="row">
   <div class="col-md-4">     <center>  <h1 class="display-4" style="color:#138496;">Spare Categories</h1> </center>
 </div>
-  <div class="col-md-4 offset-md-4 display-4" value="search"><button formaction="<?php echo base_url(); ?>index.php/Log/store_index1" name="search" class="btn btn-info">search</button>
-  <button class="btn btn-info" formaction="<?php echo base_url(); ?>index.php/Log/addspare" name="add" value="add">Add</button></div>
+  <div class="col-md-4 offset-md-4 display-4" value="search">
+  <button formaction="<?php echo base_url(); ?>index.php/Log/store_index1" name="search" class="btn btn-info">View</button>
+  <button class="btn btn-info" formaction="<?php echo base_url(); ?>index.php/Log/addspare" name="add" value="add">Add</button>
+</div>
 
 </div>
 <div class= "container"><div class="row justify-content-center"><div class="col-md-12 text-center line">&nbsp;
@@ -26,19 +28,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  </div>
  </div>
 <br><br>
-</div>
-</form>
+
 <div class="container">
 
   <div class="row">
     <div class="col">
-      <button class="btn btn-info">Engine Assemblly</button><br><br>
-      <button class="btn btn-info">Clutch</button><br><br>
-      <button class="btn btn-info">Gear Box</button><br>
+      <button formaction="<?php echo base_url(); ?>index.php/Log/spareset/Engine Assembly" class="btn btn-info">Engine Assemblly</button><br><br>
+      <button formaction="<?php echo base_url(); ?>index.php/Log/spareset/clutch" class="btn btn-info">Clutch</button><br><br>
+      <button formaction="<?php echo base_url(); ?>index.php/Log/spareset/gearbox" class="btn btn-info">Gear Box</button><br>
     </div>
     <div class="col">
       <button class="btn btn-info">Nozzles</button><br><br>
-      <button class="btn btn-info">Rear Axle</button><br><br>
+      <button formaction="<?php echo base_url(); ?>index.php/Log/spareset/Axle" class="btn btn-info">Rear Axle</button><br><br>
       <button class="btn btn-info">Front Axle</button><br>
     </div>
     <div class="col">
@@ -47,6 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
   </div>
 </div>
+</form>
 
 <script type="text/javascript" src="<?php echo base_url();?>js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>js/jquery.min.js"></script>
